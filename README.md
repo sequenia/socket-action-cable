@@ -13,16 +13,32 @@ npm install --save @sequenia/socket-action-cable
 ## Usage
 
 ```jsx
-import React, { Component } from 'react'
+import ActionCable from '@sequenia/socket-action-cable'
 
-import MyComponent from '@sequenia/socket-action-cable'
-import '@sequenia/socket-action-cable/dist/index.css'
+/* create socket connection */
+const url = "wss://url-path-to-somewhere";
+const ActionCableInstance = new ActionCable(url)
 
-class Example extends Component {
-  render() {
-    return <MyComponent />
-  }
-}
+/* subscribe to channel: channell name, params and onMessage channel callback function */
+ActionCableInstance.subscribe("ExampleChannel", {foo: "bar", bar: "buzz"}, message => message)
+
+/* unsubscribe */
+ActionCableInstance.unsubscribe("ExampleChannel")
+
+/* get readyState of socket connection */
+const readyState = ActionCableInstance.readyState
+
+/* get buffered amount of socket connection */
+const bufferedAmount = ActionCableInstance.bufferedAmount
+
+/* close connection */
+ActionCableInstance.close()
+
+/* onError socket connection callback */
+ActionCableInstance.onErrorCallback((event) => { ... })
+
+/* onClose socket connection callback */
+ActionCableInstance.onClose((event) => { ... })
 ```
 
 ## License

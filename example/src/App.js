@@ -1,10 +1,10 @@
-import React from 'react'
-
-import { ExampleComponent } from '@sequenia/socket-action-cable'
-import '@sequenia/socket-action-cable/dist/index.css'
+import React, { useEffect } from 'react'
+import ActionCable from '@sequenia/socket-action-cable'
 
 const App = () => {
-  return <ExampleComponent text="Create React Library Example 😄" />
+
+  return <div>
+  </div>
 }
 
 export default App
